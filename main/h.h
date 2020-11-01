@@ -66,10 +66,7 @@ public:
 	void push_back(char elem) 
 	{
 		if (elem == this->badelem)
-		{
 			pop_back();
-			return;
-		}
 		if (this->Tail == nullptr)
 		{
 			this->Tail = new Node(elem);
@@ -97,9 +94,13 @@ public:
 		if (cur == nullptr) return;
 		do
 		{
-			cout << cur->elem << " ";
-			cur = cur->right;
+			if (cur != nullptr)
+			{
+				cout << cur->elem << " ";
+				cur = cur->right;
+			}
+			else break;
 		}while (cur != this->Tail);
-		cout << cur->elem << " ";
+		if (cur != nullptr) cout << cur->elem << " ";
 	}
 };
